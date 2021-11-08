@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+        {% if top_cities %}
+        <ul>
+            {% for city in top_cities %}
+            <li>{{city.city_rank}}. {{city.city_name}}, visited = {{city.visited}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+        <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
+        
+            <p> {{ form.city_name.label }} <br>
+            {{ form.city_name(size=32) }}</p>
+        
+            <p> {{ form.city_rank.label }} <br>
+            {{ form.city_rank(size=28) }}</p>
+        
+            <p> {{ form.visited.label }} <br>
+            {{ form.visited() }}</p>
+        
+            <p>{{ form.submit() }}</p>
+        </form>
+{% endblock %}
